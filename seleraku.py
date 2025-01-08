@@ -32,8 +32,7 @@ def start_ping(ping_interval):
     while True:
         try:
             url = "https://nw.nodepay.org/api/network/ping"
-            data = {"timestamp": int(time.time())}
-            response = call_api(url, data)
+            response = call_api(url, proxy=None, timeout=60)
             if response:
                 logger.info("Ping successful.")
             else:
