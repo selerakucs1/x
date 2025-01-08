@@ -1,4 +1,4 @@
-import urlparse
+from __future__ import print_function  # To use print as a function in Python 2.7
 import json
 import time
 import requests
