@@ -65,10 +65,10 @@ def print_header():
         # print(f"Error: {e.filename} not found. Please ensure the file is available.")
         tokens_content, proxy_count = 0, 0
     except Exception as e:
-        print(f"An error occurred while reading files: {e}")
+        # print(f"An error occurred while reading files: {e}")
         tokens_content, proxy_count = 0, 0
 
-    print(f"\nTokens: {tokens_content} - Loaded {proxy_count} proxies\n")
+    # print(f"\nTokens: {tokens_content} - Loaded {proxy_count} proxies\n")
     print("Nodepay only supports 3 connections per account. Using too many proxies may cause issues.\n")
     print(border)
 
@@ -79,7 +79,7 @@ def ask_user_for_proxy():
         user_input = input("Do you want to use proxy? (yes/no)? ").strip().lower()
         if user_input not in ['yes', 'no']:
             print("Invalid input. Please enter 'yes' or 'no'.")
-    print(f"You selected: {'Yes' if user_input == 'yes' else 'No'}, ENJOY!\n")
+    # print(f"You selected: {'Yes' if user_input == 'yes' else 'No'}, ENJOY!\n")
     return user_input == 'yes'
 
 def load_proxies():
@@ -88,7 +88,7 @@ def load_proxies():
             proxies = file.read().splitlines()
         return proxies
     except Exception as e:
-        logger.error(f"<red>Failed to load proxies: {e}</red>")
+        # logger.error(f"<red>Failed to load proxies: {e}</red>")
         raise SystemExit("Exiting due to failure in loading proxies")
 
 def validate_proxies(proxies):
@@ -97,7 +97,7 @@ def validate_proxies(proxies):
         if proxy.startswith("http://") or proxy.startswith("https://"):
             valid_proxies.append(proxy)
         else:
-            logger.warning(f"Invalid proxy format: {proxy}")
+            # logger.warning(f"Invalid proxy format: {proxy}")
     return valid_proxies
 
 def extract_proxy_ip(proxy_url):
@@ -105,7 +105,7 @@ def extract_proxy_ip(proxy_url):
         parsed_url = urlparse(proxy_url)
         return parsed_url.hostname
     except Exception as e:
-        logger.warning(f"<yellow>Failed to extract IP from proxy: {proxy_url}, error: {e}</yellow>")
+        # logger.warning(f"<yellow>Failed to extract IP from proxy: {proxy_url}, error: {e}</yellow>")
         return "Unknown"
 
 def assign_proxies_to_tokens(tokens, proxies):
