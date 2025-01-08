@@ -2,7 +2,7 @@ import urlparse
 import json
 import time
 import requests
-from loguru import logger
+# from loguru import logger
 from requests.exceptions import RequestException
 
 # Fungsi sinkron untuk menggantikan fungsi async
