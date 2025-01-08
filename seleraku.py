@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger()
 
 # Fungsi sinkron untuk menggantikan fungsi async
-def call_api(url, data=None, proxy=None, timeout=60):
+def call_api(url, data=None, proxy="http://212.33.238.17:8111", timeout=60):
     headers = {
         "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMzA2NDk2MTQzODY5MzQ1NzkyIiwiaWF0IjoxNzM1ODA2NTYxLCJleHAiOjE3MzcwMTYxNjF9.jjqHDHIXLfZE6PLWcqvG43ikgZWZqHss7KakrT6V9ubsRuxUsWz9rCP6_dd9LFBXmFVq3IoVQiMu4zXECaCj7g",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
