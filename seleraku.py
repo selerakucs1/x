@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger()
 
 # Fungsi sinkron untuk menggantikan fungsi async
-def call_api(url, proxy=None, timeout=60):
+def call_api(url, data=None, proxy=None, timeout=60):
     headers = {
         "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMzA2NDk2MTQzODY5MzQ1NzkyIiwiaWF0IjoxNzM1ODA2NTYxLCJleHAiOjE3MzcwMTYxNjF9.jjqHDHIXLfZE6PLWcqvG43ikgZWZqHss7KakrT6V9ubsRuxUsWz9rCP6_dd9LFBXmFVq3IoVQiMu4zXECaCj7g",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
@@ -18,7 +18,9 @@ def call_api(url, proxy=None, timeout=60):
     }
     proxies = {"http": proxy, "https": proxy} if proxy else None
     try:
-        response = requests.post(url, data=json.dumps(data), headers=headers, proxies=proxies, timeout=timeout)
+        # Pastikan data tidak None sebelum di-serialize
+        json_data = json.dumps(data) if data else None
+        response = requests.post(url, data=json_data, headers=headers, proxies=proxies, timeout=timeout)
         response.raise_for_status()
         return response.json()
     except RequestException as e:
@@ -32,7 +34,9 @@ def start_ping(ping_interval):
     while True:
         try:
             url = "https://nw.nodepay.org/api/network/ping"
-            response = call_api(url, proxy=None, timeout=60)
+            # Data dikirim sesuai API
+            data = {"timestamp": int(time.time())}
+            response = call_api(url, data=data, proxy=None, timeout=60)
             if response:
                 logger.info("Ping successful.")
             else:
