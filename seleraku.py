@@ -44,5 +44,5 @@ def start_ping(token, ping_interval):
 
 # Contoh penggunaan
 if __name__ == "__main__":
-    token = "your-token"
+    token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMzA2NDk2MTQzODY5MzQ1NzkyIiwiaWF0IjoxNzM1ODA2NTYxLCJleHAiOjE3MzcwMTYxNjF9.jjqHDHIXLfZE6PLWcqvG43ikgZWZqHss7KakrT6V9ubsRuxUsWz9rCP6_dd9LFBXmFVq3IoVQiMu4zXECaCj7g"
     start_ping(token, 2)
