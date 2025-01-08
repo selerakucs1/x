@@ -2,8 +2,12 @@ import urlparse
 import json
 import time
 import requests
-# from loguru import logger
+import logging
 from requests.exceptions import RequestException
+
+# Konfigurasi logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger()
 
 # Fungsi sinkron untuk menggantikan fungsi async
 def call_api(url, data, token, proxy=None, timeout=60):
