@@ -38,7 +38,7 @@ def print_header():
 print_header()
 
 # Number of proxies to use /uid
-ONETIME_PROXY = 100
+ONETIME_PROXY = 10
 DELAY_INTERVAL = 0.5
 MAX_RETRIES = 3
 FILE_UID = "uid.txt"
