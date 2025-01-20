@@ -39,7 +39,7 @@ print_header()
 
 # Number of proxies to use /uid
 ONETIME_PROXY = 10
-DELAY_INTERVAL = 0.5
+DELAY_INTERVAL = 1
 MAX_RETRIES = 3
 FILE_UID = "uid.txt"
 FILE_PROXY = "proxy.txt"
@@ -193,7 +193,7 @@ async def connect_to_wss(protocol_proxy, user_id):
                             logger.info(f"UID: {truncate_userid(user_id)} | {node_type} | Done sent PING | data: {send_message}")
 
                         rand_sleep = random.uniform(10, 30)
-                        logger.info(f"UID: {truncate_userid(user_id)} | {node_type} | Next PING in {rand_sleep:.2f} seconds, ENJOY!")
+                        logger.info(f"UID: {truncate_userid(user_id)} | {node_type} | Next PING in {rand_sleep:.2f} seconds to Proxy : {truncate_proxy(protocol_proxy)}, ENJOY!")
                         await asyncio.sleep(rand_sleep)
 
                 await asyncio.sleep(DELAY_INTERVAL)
